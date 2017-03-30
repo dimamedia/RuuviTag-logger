@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RuuviTag sensors</title>
+		<style>
+			body {
+				padding: 50px;
+				background-color: black;
+				color: white;
+			}
+			.chart {
+				background-color: white;
+			}
+		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+	</head>
+	<body>
+		<canvas id="temperature" class="chart" style="width: 100%; height: 400px;"></canvas>
+		<canvas id="humidity" class="chart" style="width: 100%; height: 400px;"></canvas>
+		<canvas id="pressure" class="chart" style="width: 100%; height: 400px;"></canvas>
+		<script>
+
+			var options = {
+				title: {
+					display: true,
+					fontSize: 18
+				},
+				layout: {
+					padding: {
+						left: 20,
+						right: 20,
+						top: 20
+					},
+				},
+				scales: {
+					yAxes: [{
+						position: 'right',
+						scaleLabel: {
+							display: true
+						},
+						ticks: {
+							beginAtZero: false
+						}
+					}]
+				}
+			};
+
+			options.title.text = 'Temperature °C';
+			options.scales.yAxes[0].scaleLabel.labelString = '°C';
+			var temperature = new Chart(document.getElementById("temperature"), {
+				type: 'line',
+				data: {
+					labels: {{time|safe}},
+					datasets: [{{ temperature|join(',')|safe }}]
+				},
+				options: options
+			});
+
+			options.title.text = 'Air humidity %';
+			options.scales.yAxes[0].scaleLabel.labelString = '%';
+			var humidity = new Chart(document.getElementById("humidity"), {
+				type: 'line',
+				data: {
+					labels: {{time|safe}},
+					datasets: [{{ humidity|join(',')|safe }}]
+				},
+				options: options
+			});
+
+			options.title.text = 'Air pressure hPa';
+			options.scales.yAxes[0].scaleLabel.labelString = 'hPa';
+			var pressure = new Chart(document.getElementById("pressure"), {
+				type: 'line',
+				data: {
+					labels: {{time|safe}},
+					datasets: [{{ pressure|join(',')|safe }}]
+				},
+				options: options
+			});
+
+		</script>
+	</body>
+</html>
