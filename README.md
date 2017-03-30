@@ -1,14 +1,14 @@
 # RuuviTag-logger
-Log RuuviTags data to SQLite and Dweet.io and show charts on the RPi's website
+Log RuuviTags data to SQLite database and Dweet.io and show charts on the RPi's website
 
 **Charts demo:** [https://dima.fi/ruuvitag-logger/](https://dima.fi/ruuvitag-logger/)
 
 ## Used elements
   - [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
   - [Python 3](https://docs.python.org/3.6/)
+  - [RuuviTag Sensor Python Package](https://github.com/ttu/ruuvitag-sensor) by [Tomi Tuhkanen](https://github.com/ttu)
   - [Flask microframework](http://flask.pocoo.org/)
   - [SQLite 3 database](https://docs.python.org/3.6/library/sqlite3.html#module-sqlite3)
-  - [RuuviTag Sensor Python Package](https://github.com/ttu/ruuvitag-sensor) by [Tomi Tuhkanen](https://github.com/ttu)
   - [Dweet.io - IOT dwitter](https://dweet.io)
   - [Chart.js](http://www.chartjs.org/)
 
