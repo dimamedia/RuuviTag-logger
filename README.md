@@ -1,5 +1,5 @@
 # RuuviTag-logger
-Log with RuuviTags data's to SQLite and Dweet.io and show charts on the RPi's website
+Log RuuviTags data to SQLite and Dweet.io and show charts on the RPi's website
 
 ## Used elements
   - [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
