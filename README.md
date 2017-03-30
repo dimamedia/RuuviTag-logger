@@ -1,6 +1,8 @@
 # RuuviTag-logger
 Log RuuviTags data to SQLite and Dweet.io and show charts on the RPi's website
 
+**Demo:** [https://dima.fi/ruuvitag-logger/](https://dima.fi/ruuvitag-logger/)
+
 ## Used elements
   - [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
   - [Python 3](https://docs.python.org/3.6/)
