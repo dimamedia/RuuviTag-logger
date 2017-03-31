@@ -142,3 +142,5 @@ $ sudo nohup ./ruuvitag-web.py &
 The server's output log will be in `nohup.out` file.
 
 Server will listen requests in 80 port as normal web server do. Just open Raspberry's IP address in your browser.
+
+To change page layout or to add more stuff, tinker with `templates/ruuvitag.html` template file.
