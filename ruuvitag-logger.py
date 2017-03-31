@@ -21,7 +21,7 @@ dataFormat = '1'
 
 dweet = True # Enable or disable dweeting True/False
 dweetUrl = 'https://dweet.io/dweet/for/' # dweet.io url
-dweetThing = 'rasinmaenkatu11' # dweet.io thing name
+dweetThing = 'myHomeAtTheBeach' # dweet.io thing name
 
 db = True # Enable or disable database saving True/False
 dbFile = '/home/pi/ruuvitag/ruuvitag.db' # path to db file
