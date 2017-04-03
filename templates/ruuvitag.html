@@ -9,19 +9,23 @@
 				background-color: black;
 				color: white;
 			}
-			.chart {
+			.chartWrapper {
+				position: relative;
+				height: 400px;
 				background-color: white;
 			}
 		</style>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 	</head>
 	<body>
-		<canvas id="temperature" class="chart" style="width: 100%; height: 400px;"></canvas>
-		<canvas id="humidity" class="chart" style="width: 100%; height: 400px;"></canvas>
-		<canvas id="pressure" class="chart" style="width: 100%; height: 400px;"></canvas>
+		<div class="chartWrapper"><canvas id="temperature"></canvas></div>
+		<div class="chartWrapper"><canvas id="humidity"></canvas></div>
+		<div class="chartWrapper"><canvas id="pressure"></canvas></div>
 		<script>
 
 			var options = {
+				responsive: true,
+				maintainAspectRatio: false,
 				title: {
 					display: true,
 					fontSize: 18
