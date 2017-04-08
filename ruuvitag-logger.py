@@ -48,8 +48,9 @@ if db:
 
 	# check if table exists
 	cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='sensors'")
-	if cursor.fetchone()[0] != "sensors":
-		print("Creating 'sensors' table ...")
+	row = cursor.fetchone()	
+	if row is None:
+		print("DB table not found. Creating 'sensors' table ...")
 		conn.execute('''CREATE TABLE sensors
 			(
 				id				INTEGER		PRIMARY KEY AUTOINCREMENT	NOT NULL,
