@@ -20,7 +20,7 @@ def index():
 
 	# set hom many days you want to see in charts
 	N = 30 # show charts for 30 days
-	
+
 	date_N_days_ago = str(datetime.now() - timedelta(days=N))
 	tags = conn.execute("SELECT DISTINCT mac, name FROM sensors WHERE timestamp > '"+date_N_days_ago+"' ORDER BY name, timestamp DESC")
 
@@ -44,7 +44,7 @@ def index():
 					sList[sensor].append(sRow[sensor])
 
 			color = randomRGB()
-			
+
 			dataset = """{{
 				label: '{}',
 				borderColor: 'rgba{}',
