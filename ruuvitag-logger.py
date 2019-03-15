@@ -3,7 +3,7 @@
 import time
 from ruuvitag_sensor.ble_communication import BleCommunicationNix
 from ruuvitag_sensor.ruuvi import RuuviTagSensor
-from ruuvitag_sensor.url_decoder import UrlDecoder
+from ruuvitag_sensor.decoder import UrlDecoder
 
 ble = BleCommunicationNix()
 
@@ -48,7 +48,7 @@ if db:
 
 	# check if table exists
 	cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='sensors'")
-	row = cursor.fetchone()	
+	row = cursor.fetchone()
 	if row is None:
 		print("DB table not found. Creating 'sensors' table ...")
 		conn.execute('''CREATE TABLE sensors
@@ -77,21 +77,21 @@ class Rtag(RuuviTagSensor):
 	def getData(self):
 		return ble.get_data(self._mac)
 
-	
+
 now = time.strftime('%Y-%m-%d %H:%M:%S')
 print(now+"\n")
 
 dweetData = {}
 dbData = {}
-	
+
 for mac, name in tags.items():
 	tag = Rtag(mac, name)
 
 	print("Looking for {} ({})".format(tag._name, tag._mac))
 	# if weather station
 	if dataFormat == '1': # get parsed data
-
-		data = UrlDecoder().decode_data(RuuviTagSensor.convert_data(tag.getData()))
+		encoded = RuuviTagSensor.convert_data(tag.getData());
+		data = UrlDecoder().decode_data(encoded[1])
 		print ("Data received:", data)
 
 		dbData[tag._mac] = {'name': tag._name}
@@ -102,12 +102,12 @@ for mac, name in tags.items():
 
 	elif dataFormat == '3': # under development
 		print ("Data:", tag.getData())
-		
+
 	else: # if unknown format, just print raw data
 		print ("Data:", tag.getData())
 
 	print("\n")
-		
+
 if dweet:
 	# send data to dweet.io
 	print("Dweeting data for {} ...".format(dweetThing))
